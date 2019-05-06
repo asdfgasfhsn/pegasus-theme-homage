@@ -7,6 +7,8 @@ FocusScope {
     }
 
     FontLoader {id: coolvetica; source: "fonts/coolvetica.regular.ttf" }
+    FontLoader {id: cabin; source: "fonts/Cabin-Bold.ttf" }
+    FontLoader {id: changa; source: "fonts/ChangaOne-italic.ttf" }
 
     // Generate the tiled background using gridview/rect delegates...
     // TODO: figure out if this is a performance issue for RPi

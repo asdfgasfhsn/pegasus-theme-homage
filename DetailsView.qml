@@ -221,7 +221,7 @@ LinearGradient {
         text: "≡ %1".arg(currentCollection.name) || "Not Found"
         color: "#f3f3f3"
         font.pixelSize: vpx(18)
-        font.family: "coolvetica"
+        font.family: "cabin"
         font.capitalization: Font.AllUppercase
         Behavior on text {
           FadeAnimation {

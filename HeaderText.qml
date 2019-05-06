@@ -20,10 +20,10 @@ import QtQuick.Layouts 1.11
     Text {
         id: textMetrics
         font.capitalization: Font.AllUppercase
-        font.family: "coolvetica"
+        font.family: "cabin"
         font.pixelSize: vpx(52)
         font.weight: Font.Bold
-        font.letterSpacing: vpx(2)
+        //font.letterSpacing: vpx(2)
         text: titletext
         visible: false
     }

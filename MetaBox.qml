@@ -24,7 +24,7 @@ import QtQuick.Layouts 1.11
       text: metaTitle
       color: "black"
       width: parent.width
-      font.family: "coolvetica"
+      font.family: "cabin"
       fontSizeMode: Text.Fit; minimumPixelSize: vpx(8); font.pixelSize: vpx(8)
       font.weight: Font.Bold
       font.capitalization: Font.AllUppercase
@@ -42,7 +42,7 @@ import QtQuick.Layouts 1.11
       color: "black"
       width: parent.width
       height: parent.height
-      font.family: "coolvetica"
+      font.family: "cabin"
       font.capitalization: Font.AllUppercase
       fontSizeMode: Text.Fit; minimumPixelSize: vpx(10); font.pixelSize: vpx(44)
       horizontalAlignment: Text.AlignHCenter

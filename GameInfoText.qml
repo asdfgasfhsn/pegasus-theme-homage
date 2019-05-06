@@ -5,7 +5,7 @@ import QtQuick 2.8
 
 Text {
     font.pixelSize: vpx(12)
-    font.family: "coolvetica"
+    font.family: "cabin"
     font.weight: Font.Bold
     elide: Text.ElideRight
 }
