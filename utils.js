@@ -46,3 +46,26 @@ function formatPlayTime(playTime) {
 
     return parseFloat((minutes / 60).toFixed(1)) + " H"
 }
+
+function systemColor(input_str) {
+  var colors = ["#711521", "#C1121C", "#C1121C", "#F7BA0B", "#007243", "#00387b", "#514689", "#a7a4e0", "#17569b"]
+  var colorCount = colors.length
+  // From: https://www.raphnet.net/design/console_colors/index.php
+  // Famicom #711521
+  // NES #C1121C
+  // SNES RED #C1121C
+  // SNES YELLOW #F7BA0B
+  // SNES GREEN #007243
+  // SNES BLUE #00387b
+  // SNES A/B #514689
+  // SNES Y/X #a7a4e0
+  // SEGA BLUE: #17569b
+
+  // SNES CONSOLE GREY #b2b4b2
+  // SNES DPAD GRAY #54585a
+  // SNES BUTTON ZONE GRAY #707372
+
+  var seed = input_str.charCodeAt(0) ^ input_str.charCodeAt(1);
+  var moduloPosition = seed % colorCount
+  return colors[moduloPosition]
+}

@@ -23,100 +23,136 @@ Item {
     property var game
     property var collectionView
     property var detailView
+    property var collectionShortName
+    property bool steam: false
 
     onGameChanged: {
       if ( detailView ) {
-        videoPreview.stop();
-        videoPreview.playlist.clear();
+        videoPreviewLoader.sourceComponent = undefined;
+        unfadescreenshot.restart();
         videoDelay.restart();
       } else {
-        videoPreview.stop();
-        videoPreview.playlist.clear();
+        videoPreviewLoader.sourceComponent = undefined;
         }
       }
 
     onCollectionViewChanged: {
       if ( collectionView ) {
-      videoPreview.stop();
-      videoPreview.playlist.clear();
+      videoPreviewLoader.sourceComponent = undefined;
+      unfadescreenshot.restart();
       videoDelay.stop();
     } else {
-      videoPreview.playlist.clear();
+      videoPreviewLoader.sourceComponent = undefined;
       videoDelay.restart();
+      }
+      if (collectionShortName == "steam") {
+        steam = true
+      } else {
+        steam = false
       }
     }
 
     // a small delay to avoid loading videos during scrolling
     Timer {
-        id: videoDelay
-        interval: 666
-        onTriggered: {
-            if (game && game.assets.videos.length > 0) {
-                for (var i = 0; i < game.assets.videos.length; i++)
-                    videoPreview.playlist.addItem(game.assets.videos[i]);
-                videoPreview.play();
-            }
+      id: videoDelay
+      interval: 666
+      onTriggered: {
+        if (game.assets.videos.length) {
+          videoPreviewLoader.sourceComponent = videoPreviewWrapper;
+          fadescreenshot.restart();
         }
+      }
     }
 
-    Item {
-      id: gameDebug
-      function gameDebug(game) {
-        console.warn("video count: ", game.assets.videos.length);
-        }
+    Timer {
+      id: fadescreenshot
+      interval: 1000
+      onTriggered: {
+        screenshot.opacity = 0;
+      }
+    }
+    Timer {
+      id: unfadescreenshot
+      interval: 10
+      onTriggered: {
+        screenshot.opacity = 100;
+      }
     }
 
-    Rectangle {
-        id: videoBox
-        color: "transparent"
+    // Actual art
+    Image {
+      id: screenshot
+
+      width: root.Width
+      height: root.Height
+      z: 3
+      anchors {
+        fill: parent
+        margins: vpx(4)
+      }
+
+      asynchronous: true
+      visible: game.assets.screenshots[0] || game.assets.boxFront || ""
+
+      smooth: true
+
+      source: (steam) ? game.assets.logo : game.assets.screenshots[0] || ""
+      sourceSize { width: 256; height: 256 }
+      fillMode: Image.PreserveAspectRatio
+
+      property bool rounded: true
+      property bool adapt: true
+
+      Behavior on opacity { PropertyAnimation { duration: 1000; easing.type: Easing.OutQuart; easing.amplitude: 2.0; } }
+
+      layer.enabled: rounded
+      layer.effect: OpacityMask {
+          maskSource: Item {
+              width: screenshot.width
+              height: screenshot.height
+              Rectangle {
+                  anchors.centerIn: parent
+                  width: screenshot.width
+                  height: screenshot.height
+                  radius: vpx(10)
+              }
+          }
+       }
+    }
+
+    // Video preview
+    Component {
+      id: videoPreviewWrapper
+      Video {
+        source: game.assets.videos.length ? game.assets.videos[0] : ""
         anchors.fill: parent
-        // border.color: "red"
-        // border.width: vpx(5)
-        width: videoPreviewImage.width
-        height: videoPreviewImage.height
+        fillMode: VideoOutput.PreserveAspectCrop
+        muted: true
+        loops: MediaPlayer.Infinite
+        autoPlay: true
+      }
 
-        clip: true
-        visible: (game && (game.assets.videos.length || game.assets.screenshots.length)) || false
+    }
 
-        Video {
-            id: videoPreview
-            visible: playlist.itemCount > 0
-
-            muted: true
-
-            width: metaData.resolution ? metaData.resolution.width : 0
-            height: metaData.resolution ? metaData.resolution.height : 0
-
-            anchors { fill: parent; }//margins: 1 }
-            fillMode: VideoOutput.PreserveAspectFit
-
-            playlist: Playlist {
-                playbackMode: Playlist.Loop
-            }
-        }
-
-        Image {
-            id: videoPreviewImage
-            visible: false // !videoPreview.visible
-            width: Image.width
-            height: Image.height
-            //anchors { fill: parent; margins: 0 }
-            fillMode: Image.PreserveAspectFit
-
-            source: (game && game.assets.screenshots.length && game.assets.screenshots[0]) || ""
-            sourceSize { width: vpx(256); height: vpx(256) }
-            asynchronous: true
-        }
-
-        OpacityMask {
-            anchors { fill: videoBox; margins: 0 }
-            source: videoPreviewImage
-            maskSource: Rectangle {
-                width: videoPreviewImage.width
-                height: videoPreviewImage.height
-                radius: vpx(8)
-                visible: false // this also needs to be invisible or it will cover up the image
-            }
-        }
+    Loader {
+      id: videoPreviewLoader
+      asynchronous: true
+      anchors {
+        fill: parent
+        margins: vpx(4)
+      }
+      layer.enabled: true
+      layer.effect: OpacityMask {
+          maskSource: Item {
+              width: videoPreviewLoader.width
+              height: videoPreviewLoader.height
+              Rectangle {
+                  anchors.centerIn: parent
+                  width: videoPreviewLoader.width
+                  height: videoPreviewLoader.height
+                  radius:  vpx(10)
+              }
+          }
+      }
     }
 }

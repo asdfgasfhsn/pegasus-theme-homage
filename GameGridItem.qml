@@ -21,16 +21,18 @@ import QtGraphicalEffects 1.12
 Rectangle {
     id: root
 
-    border.color: "#99FFFFFF"
-    border.width: selected ? vpx(3) : 0
-    color: selected ? "#000000" : "transparent"
-
     property bool selected: false
     property var game
+    property var systemColor
+
+    border.color: systemColor //"#99FFFFFF"
+    border.width: selected ? vpx(3) : 0
+    color: selected ? "#000000" : "transparent"
 
     property alias imageWidth: boxFront.paintedWidth
     property alias imageHeight: boxFront.paintedHeight
     property real imageHeightRatio: 0.5
+
 
     height: width * imageHeightRatio
 
@@ -59,14 +61,14 @@ Rectangle {
 
     Image {
         id: boxFront
-        anchors { fill: parent; margins: vpx(6) }
+        anchors { fill: parent; margins: vpx(4) }
 
         asynchronous: true
         visible: game.assets.boxFront
 
         source: game.assets.boxFront || ""
         sourceSize { width: 256; height: 256 }
-        fillMode: Image.PreserveAspectFit
+        fillMode: selected ? Image.PreserveAspectFit : Image.PreserveAspectCrop
         smooth: true
 
         onStatusChanged: if (status === Image.Ready) {
@@ -85,7 +87,7 @@ Rectangle {
             loops: Animator.Infinite;
             from: 0;
             to: 360;
-            duration: 500
+            duration: 2000
         }
     }
 

@@ -67,7 +67,7 @@ FocusScope {
       id: content
       anchors {
         top: parent.top
-        left: screenshot.right
+        left: screenshotBox.right
         right: parent.right
         bottom: parent.bottom
       }
@@ -81,7 +81,7 @@ FocusScope {
           height: vpx(700)
 
           preferredHighlightBegin: vpx(120)
-          preferredHighlightEnd: vpx(600)
+          preferredHighlightEnd: vpx(580)
 
           anchors {
             rightMargin: vpx(48)
@@ -130,7 +130,7 @@ FocusScope {
               width: GridView.view.cellWidth
               height: GridView.view.cellHeight
               selected: GridView.isCurrentItem
-
+              systemColor: Utils.systemColor(currentCollection.shortName)
               //transform: Rotation { origin.x: parent.width/2; origin.y: parent.width/2; axis { x: 0; y: 1; z: 0 } angle: selected ? 5 : 0 }
 
               game: modelData
@@ -257,15 +257,30 @@ LinearGradient {
   }
 
   Rectangle {
+    id: screenshotBox
+    height: vpx(400)
+    width: vpx(620)
+    color: "transparent"
+    clip: false
+    anchors {
+      bottom: gameDetails.top
+      left: parent.left; leftMargin: vpx(20)
+    }
+
+  Rectangle {
+    // TODO: make width/height adhere to platform specific ratios so screenshots
+    // and videos "fit nicely". Currently forced to 4/3.
+    // 16:9 :: 608 x 342 (PSVita)
+    // 3:2 :: 612:408 (GBA/GB)
+    // 8:7 :: 608:532 (NES)
       id: screenshot
-      height: vpx(400)
-      width: vpx(600)
+      width: vpx(504)
+      height: vpx(378)
       color: "#00f3f3f3"
 
       anchors {
-          bottom: gameDetails.top; bottomMargin: vpx(10)
-          left: headerGameTitle.left
-          horizontalCenter: gameDetails.horizontalCenter
+            horizontalCenter: parent.horizontalCenter
+            verticalCenter: parent.verticalCenter
       }
 
       GameVideoItem {
@@ -275,6 +290,8 @@ LinearGradient {
           game: currentGame
             collectionView: collectionsView.focus
             detailView: detailsView.focus
-      }
+            collectionShortName: currentCollection.shortName
+       }
+    }
   }
 }
