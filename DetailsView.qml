@@ -124,7 +124,7 @@ FocusScope {
 
           displayMarginBeginning: anchors.topMargin
 
-          transform: Rotation { origin.x: grid.height/2; origin.y: grid.width/2; axis { x: 0; y: 1; z: 0 } angle: -5 }
+          transform: Rotation { origin.x: grid.height/2; origin.y: grid.width/2; axis { x: 0; y: 1; z: 0 } angle: -8 }
 
           delegate: GameGridItem {
               width: GridView.view.cellWidth
@@ -277,6 +277,8 @@ LinearGradient {
       width: vpx(504)
       height: vpx(378)
       color: "#00f3f3f3"
+
+      transform: Rotation { origin.x: grid.height/2; origin.y: grid.width/2; axis { x: 0; y: 1; z: 0 } angle: 8 }
 
       anchors {
             horizontalCenter: parent.horizontalCenter
