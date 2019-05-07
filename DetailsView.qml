@@ -81,7 +81,7 @@ FocusScope {
           height: vpx(700)
 
           preferredHighlightBegin: vpx(120)
-          preferredHighlightEnd: vpx(580)
+          preferredHighlightEnd: vpx(560)
 
           anchors {
             rightMargin: vpx(48)
@@ -278,7 +278,7 @@ LinearGradient {
       height: vpx(378)
       color: "#00f3f3f3"
 
-      transform: Rotation { origin.x: grid.height/2; origin.y: grid.width/2; axis { x: 0; y: 1; z: 0 } angle: 8 }
+      transform: Rotation { origin.x: screenshotBox.height/2; origin.y: screenshotBox.width/2; axis { x: 0; y: 1; z: 0 } angle: 8 }
 
       anchors {
             horizontalCenter: parent.horizontalCenter
