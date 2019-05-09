@@ -195,7 +195,7 @@ LinearGradient {
   Item {
     id: metaBar
     width: parent.width
-    height: vpx(110)
+    height: vpx(106)
     anchors {
       bottom: headerGameTitle.top
       left: headerGameTitle.left
@@ -214,7 +214,7 @@ LinearGradient {
         id: collectionName
         anchors {
           left: parent.left; //leftMargin: vpx(10)
-          top: parent.top;
+          top: metaBarBg.top;
           topMargin: vpx(4)
           }
         text: "≡ %1".arg(currentCollection.name) || "Not Found"

@@ -25,13 +25,13 @@ import QtQuick.Layouts 1.11
       color: "black"
       width: parent.width
       font.family: globalFonts.condensed
-      fontSizeMode: Text.Fit; minimumPixelSize: vpx(8); font.pixelSize: vpx(8)
+      fontSizeMode: Text.Fit; minimumPixelSize: vpx(8); font.pixelSize: vpx(10)
       font.weight: Font.Bold
       font.capitalization: Font.AllUppercase
       horizontalAlignment: Text.AlignHCenter
-      padding: vpx(6)
+      padding: vpx(4)
       anchors {
-        top: parent.top;
+        bottom: parent.bottom;
         left: parent.left; right: parent.right
       }
     }
