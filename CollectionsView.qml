@@ -1,5 +1,6 @@
 import QtQuick 2.8
 import QtGraphicalEffects 1.12
+import "utils.js" as Utils // some helper functions
 // The collections view consists of two carousels, one for the collection logo bar
 // and one for the background images. They should have the same number of elements
 // to be kept in sync.
@@ -69,7 +70,7 @@ FocusScope {
             id: logoAxis
 
             anchors.fill: parent
-            itemWidth: vpx(500)
+            itemWidth: vpx(460)
 
             model: api.collections
             delegate: CollectionLogo {
@@ -95,6 +96,24 @@ FocusScope {
 
             onItemSelected: root.collectionSelected()
         }
+    }
+
+    LinearGradient {
+      width: parent.width
+      height: parent.height
+      anchors {
+        top: parent.top
+        right: parent.right
+        bottom: parent.bottom
+      }
+      start: Qt.point(0, 0)
+      end: Qt.point(0, height)
+      gradient: Gradient {
+        GradientStop { position: 0.0; color: "#ff000000" }
+        GradientStop { position: 0.2; color: "#6017569b" }
+        GradientStop { position: 0.4; color: "#3017569b" }
+        GradientStop { position: 0.6; color: "#00000000" }
+      }
     }
 
     Item {
@@ -125,11 +144,11 @@ FocusScope {
           }
         text: "%1".arg(currentCollection.name) || "Not Found"
         color: "black"
-        font.family: "cabin"
+        font.family: globalFonts.sansFont
         fontSizeMode: Text.Fit; minimumPixelSize: vpx(30); font.pixelSize: vpx(52)
         font.capitalization: Font.AllUppercase
         font.weight: Font.Bold
-        
+
         Behavior on text {
           FadeAnimation {
               target: systemNameHeader
@@ -145,7 +164,7 @@ FocusScope {
           text: "≡ %1 TITLES AVAILABLE".arg(currentCollection.games.count)
           color: "black"
           font.pixelSize: vpx(20)
-          font.family: "cabin"
+          font.family: globalFonts.condensed
           Behavior on text {
             FadeAnimation {
                 target: systemItemCount

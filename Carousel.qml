@@ -6,7 +6,7 @@ PathView {
     id: root
 
     property int itemWidth // set this on the calling site
-    readonly property int pathWidth: pathItemCount * itemWidth
+    readonly property int pathWidth: pathItemCount * itemWidth 
 
     signal itemSelected
 

@@ -131,7 +131,6 @@ FocusScope {
               height: GridView.view.cellHeight
               selected: GridView.isCurrentItem
               systemColor: Utils.systemColor(currentCollection.shortName)
-              //transform: Rotation { origin.x: parent.width/2; origin.y: parent.width/2; axis { x: 0; y: 1; z: 0 } angle: selected ? 5 : 0 }
 
               game: modelData
 
@@ -221,7 +220,7 @@ LinearGradient {
         text: "≡ %1".arg(currentCollection.name) || "Not Found"
         color: "#f3f3f3"
         font.pixelSize: vpx(18)
-        font.family: "cabin"
+        font.family: globalFonts.condensed
         font.capitalization: Font.AllUppercase
         Behavior on text {
           FadeAnimation {

@@ -6,7 +6,7 @@ FocusScope {
         collectionsView.currentCollectionIndex = api.memory.get('collectionIndex') || 0;
     }
 
-    FontLoader {id: coolvetica; source: "fonts/coolvetica.regular.ttf" }
+    FontLoader {id: coolveticaRegular; source: "fonts/coolvetica.regular.ttf" }
     FontLoader {id: cabin; source: "fonts/Cabin-Bold.ttf" }
     FontLoader {id: changa; source: "fonts/ChangaOne-italic.ttf" }
     FontLoader {id: contrail; source: "fonts/ContrailOne-Regular.ttf" }
@@ -37,6 +37,25 @@ FocusScope {
         border.width: 1
         radius: 0
         }
+      }
+
+      property real fps : 15
+      property int frame : 0
+      property bool running : true
+      property int pixelDim : 6
+
+      Timer {
+          id: timer
+          repeat: true
+          interval: 1000 / fps
+          onTriggered: { frame += 1 }
+          running: parent.running
+      }
+
+      StarField {
+          anchors {
+            left: parent.left
+          }
       }
 
     // TODO: Possibly use this method for performance reasons...

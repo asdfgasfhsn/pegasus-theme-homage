@@ -12,7 +12,7 @@ Item {
     }
     Text {
       text: 'RATING'
-      font.family: "coolvetica" //coolvetica.name
+      font.family: globalFonts.condensed
       font.pixelSize: vpx(10)
       font.weight: Font.Bold
       anchors {
@@ -23,7 +23,7 @@ Item {
     Text {
       id: ratingValue
       text: (game.rating == "") ? "N/A" : Math.round(game.rating * 100) + '%'
-      font.family: "coolvetica" //coolvetica.name
+      font.family: globalFonts.condensed
       fontSizeMode: Text.Fit; minimumPixelSize: vpx(30); font.pixelSize: vpx(36)
       anchors {
         verticalCenter: ratingCircle.verticalCenter

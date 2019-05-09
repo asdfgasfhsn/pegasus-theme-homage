@@ -9,7 +9,7 @@ import QtQuick.Layouts 1.11
     color: "#f3f3f3"
 
     property real textWidth: {
-        if (textMetrics.width > parent.width) return vpx(1230);
+        if (textMetrics.width > vpx(1230)) return vpx(1230);
                 return textMetrics.width;
     }
 
@@ -20,10 +20,9 @@ import QtQuick.Layouts 1.11
     Text {
         id: textMetrics
         font.capitalization: Font.AllUppercase
-        font.family: "cabin"
+        font.family: globalFonts.sansFont
         font.pixelSize: vpx(52)
         font.weight: Font.Bold
-        //font.letterSpacing: vpx(2)
         text: titletext
         visible: false
     }

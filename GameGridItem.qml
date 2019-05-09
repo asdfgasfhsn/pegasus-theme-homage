@@ -25,8 +25,8 @@ Rectangle {
     property var game
     property var systemColor
 
-    border.color: systemColor //"#99FFFFFF"
-    border.width: selected ? vpx(3) : 0
+    border.color: selected ? systemColor : "transparent"//"#99FFFFFF"
+    border.width: vpx (6) // selected ? vpx(3) : 0
     color: selected ? "#000000" : "transparent"
 
     property alias imageWidth: boxFront.paintedWidth
@@ -41,7 +41,7 @@ Rectangle {
     signal imageLoaded(int imgWidth, int imgHeight)
 
     scale: selected ? 1.5 : 1.0
-    opacity: selected ? 1 : 0.666
+    opacity: 1 //selected ? 1 : 0.666
     z: selected ? 3 : 1
 
     Behavior on scale { PropertyAnimation { duration: 333 } }
@@ -68,7 +68,7 @@ Rectangle {
 
         source: game.assets.boxFront || ""
         sourceSize { width: 256; height: 256 }
-        fillMode: selected ? Image.PreserveAspectFit : Image.PreserveAspectCrop
+        fillMode: Image.PreserveAspectFit
         smooth: true
 
         onStatusChanged: if (status === Image.Ready) {
@@ -91,8 +91,19 @@ Rectangle {
         }
     }
 
+    Rectangle {
+      id: textBox
+      width: boxFront.width
+      height: boxFront.height
+      anchors.centerIn: parent
+      // anchors.margins: vpx(4)
+      visible: !game.assets.boxFront
+      color: "#000000"
+    }
+
     Text {
-        width: parent.width - vpx(64)
+        width: parent.width - vpx(10)
+        height: parent.height - vpx(10)
         anchors.centerIn: parent
 
         visible: !game.assets.boxFront
@@ -103,7 +114,7 @@ Rectangle {
         color: "#eee"
         font {
             pixelSize: vpx(16)
-            family: globalFonts.sans
+            family: globalFonts.condensed
         }
     }
 

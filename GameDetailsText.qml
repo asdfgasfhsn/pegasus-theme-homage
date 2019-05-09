@@ -17,7 +17,7 @@ import QtQuick.Layouts 1.11
       Text {
           id: metaData
           text: metatext
-          font.family: "cabin"
+          font.family: globalFonts.condensed
           font.pixelSize: vpx(14)
           font.capitalization: Font.AllUppercase
           color: "#f3f3f3"
