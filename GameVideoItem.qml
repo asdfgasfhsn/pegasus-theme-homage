@@ -127,7 +127,8 @@ Item {
         source: game.assets.videos.length ? game.assets.videos[0] : ""
         anchors.fill: parent
         fillMode: VideoOutput.PreserveAspectCrop
-        muted: true
+        //muted: true
+        volume: 0.3
         loops: MediaPlayer.Infinite
         autoPlay: true
       }

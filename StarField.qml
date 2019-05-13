@@ -25,6 +25,8 @@ Item {
           anchors.fill: parent
           emitRate: 100 // parent.width / 10
           lifeSpan: 20000
+          lifeSpanVariation: 5000
+          startTime: 5000
           group: "stars"
           endSize: vpx(10)
       }
@@ -47,6 +49,8 @@ Item {
           anchors.fill: parent
           emitRate: 5
           lifeSpan: 35000
+          lifeSpanVariation: 5000
+          startTime: 5000
           group: "starsBig"
           endSize: vpx(15)
       }
@@ -68,7 +72,9 @@ Item {
           id: starsemitterBigger
           anchors.fill: parent
           emitRate: 0.2
+          lifeSpanVariation: 10000
           lifeSpan: 50000
+          startTime: 5000
           group: "starsBigger"
           endSize: vpx(30)
       }

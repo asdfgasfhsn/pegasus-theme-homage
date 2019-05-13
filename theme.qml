@@ -13,36 +13,31 @@ FocusScope {
 
     // Generate the tiled background using gridview/rect delegates...
     // TODO: figure out if this is a performance issue for RPi
-    GridView {
-      id: bgRect
-      width: parent.width
-      height: parent.height
-
-      anchors {
-        top: parent.top
-        left: parent.left
-        right: parent.right
-        //fill: parent
-      }
-      model: 2600
-
-      cellWidth: vpx(20)
-      cellHeight: vpx(20)
-
-      delegate: Rectangle {
-        width: vpx(20)
-        height: vpx(20)
-        color: "black"
-        border.color: Qt.rgba(0.5, 0.5, 0.5, 0.1)
-        border.width: 1
-        radius: 0
-        }
-      }
-
-      property real fps : 15
-      property int frame : 0
-      property bool running : true
-      property int pixelDim : 6
+    // GridView {
+    //   id: bgRect
+    //   width: parent.width
+    //   height: parent.height
+    //
+    //   anchors {
+    //     top: parent.top
+    //     left: parent.left
+    //     right: parent.right
+    //     //fill: parent
+    //   }
+    //   model: 2600
+    //
+    //   cellWidth: vpx(20)
+    //   cellHeight: vpx(20)
+    //
+    //   delegate: Rectangle {
+    //     width: vpx(20)
+    //     height: vpx(20)
+    //     color: "black"
+    //     border.color: Qt.rgba(0.5, 0.5, 0.5, 0.1)
+    //     border.width: 1
+    //     radius: 0
+    //     }
+    //   }
 
       Timer {
           id: timer
