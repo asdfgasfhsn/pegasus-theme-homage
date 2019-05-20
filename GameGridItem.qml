@@ -42,12 +42,12 @@ Rectangle {
     signal doubleClicked()
     signal imageLoaded(int imgWidth, int imgHeight)
 
-    scale: selected ? 1.5 : 1.0
+    scale: selected ? 1.5 : 1
     opacity: 1 //selected ? 1 : 0.666
     z: selected ? 3 : 1
 
-    Behavior on scale { PropertyAnimation { duration: 333 } }
-    Behavior on opacity { PropertyAnimation { duration: 333 } }
+    Behavior on scale { PropertyAnimation { duration: 150 } }
+    // Behavior on opacity { PropertyAnimation { duration: 333 } }
 
     layer.enabled: selected ? true : false
     layer.effect: DropShadow {

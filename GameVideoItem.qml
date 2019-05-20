@@ -92,13 +92,13 @@ Item {
       }
 
       asynchronous: true
-      visible: game.assets.screenshots[0] || game.assets.boxFront || ""
+      visible: game.assets.screenshots[0] || game.assets.boxFront || false
 
       smooth: true
 
       source: (steam) ? game.assets.logo : game.assets.screenshots[0] || ""
       sourceSize { width: 256; height: 256 }
-      fillMode: Image.PreserveAspectRatio
+      fillMode: Image.PreserveAspectCrop
 
       property bool rounded: true
       property bool adapt: true

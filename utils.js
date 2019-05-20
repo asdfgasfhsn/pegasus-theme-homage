@@ -42,13 +42,13 @@ function formatLastPlayed(lastPlayed) {
 function formatPlayTime(playTime) {
     var minutes = Math.ceil(playTime / 60)
     if (minutes <= 90)
-        return Math.round(minutes) + " M";
+        return Math.round(minutes) + " Mins";
 
-    return parseFloat((minutes / 60).toFixed(1)) + " H"
+    return parseFloat((minutes / 60).toFixed(1)) + " Hours"
 }
 
 function systemColor(input_str) {
-  var colors = ["#711521", "#C1121C", "#C1121C", "#F7BA0B", "#007243", "#00387b", "#514689", "#a7a4e0", "#17569b"]
+  var colors = ["#711521", "#C1121C", "#F7BA0B", "#007243", "#00387b", "#514689", "#17569b"]
   var colorCount = colors.length
   // From: https://www.raphnet.net/design/console_colors/index.php
   // Famicom #711521

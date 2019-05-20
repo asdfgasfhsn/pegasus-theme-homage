@@ -39,13 +39,13 @@ FocusScope {
     //     }
     //   }
 
-      Timer {
-          id: timer
-          repeat: true
-          interval: 1000 / fps
-          onTriggered: { frame += 1 }
-          running: parent.running
-      }
+      // Timer {
+      //     id: timer
+      //     repeat: true
+      //     interval: 1000 / fps
+      //     onTriggered: { frame += 1 }
+      //     running: parent.running
+      // }
 
       StarField {
           anchors {
