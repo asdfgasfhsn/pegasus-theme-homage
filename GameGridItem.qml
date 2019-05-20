@@ -25,6 +25,8 @@ Rectangle {
     property var game
     property var systemColor
 
+    antialiasing: true
+
     border.color: selected ? systemColor : "transparent"//"#99FFFFFF"
     border.width: vpx (6) // selected ? vpx(3) : 0
     color: selected ? "#000000" : "transparent"
