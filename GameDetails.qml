@@ -6,13 +6,10 @@ import "utils.js" as Utils // some helper functions
 Rectangle {
   id: root
   property var game
-  // border.color: 'red'
-  // border.width: vpx(5)
    Item {
      id: gameDescriptionRect
-     height: vpx(100)
-     width: parent.width
      anchors {
+         fill: parent
          horizontalCenter: parent.horizontalCenter
      }
 

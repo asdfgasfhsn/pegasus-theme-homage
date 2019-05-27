@@ -242,14 +242,13 @@ LinearGradient {
      }
   }
 
-
   GameDetails {
     id: gameDetails
     game: currentGame
     color: "#00f3f3f3"
     width: vpx(620)
-    height: vpx(100)
     anchors {
+      top: screenshotBox.bottom
       bottom: metaBar.top
       left: headerGameTitle.left
     }
@@ -262,7 +261,7 @@ LinearGradient {
     color: "transparent"
     clip: false
     anchors {
-      bottom: gameDetails.top
+      top: root.top; topMargin: vpx(40)
       left: parent.left; leftMargin: vpx(20)
     }
 
