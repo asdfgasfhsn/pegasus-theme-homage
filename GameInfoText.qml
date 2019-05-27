@@ -4,8 +4,8 @@ import QtQuick 2.8
 // so I've moved them into a new QML type.
 
 Text {
-    font.pixelSize: vpx(12)
-    font.family: globalFonts.condensed
-    font.weight: Font.Bold
+    font.pixelSize: vpx(14)
+    font.family: generalFont.name
+    // font.weight: Font.Bold
     elide: Text.ElideRight
 }

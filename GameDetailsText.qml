@@ -17,7 +17,7 @@ import QtQuick.Layouts 1.11
       Text {
           id: metaData
           text: metatext
-          font.family: globalFonts.condensed
+          font.family: generalFont.name
           font.pixelSize: vpx(14)
           font.capitalization: Font.AllUppercase
           color: "#f3f3f3"

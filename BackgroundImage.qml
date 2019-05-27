@@ -9,7 +9,7 @@ Item {
 
   property real dimopacity: 0.666
 
-  property string bgSource: gameData ? gameData.assets.background || gameData.assets.screenshots[0] || 'assets/backgrounds/blank.png' : ""
+  property string bgSource: gameData ? gameData.assets.background || gameData.assets.screenshots[0] || 'assets/backgrounds/blank.png' : 'assets/backgrounds/blank.png'
   property string bgImage1
   property string bgImage2
   property bool firstBG: true

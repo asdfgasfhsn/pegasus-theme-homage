@@ -78,10 +78,10 @@ FocusScope {
       GridView {
           id: grid
           width: vpx(560)
-          height: vpx(700)
+          height: parent.height//vpx(700)
 
           preferredHighlightBegin: vpx(120)
-          preferredHighlightEnd: vpx(560)
+          preferredHighlightEnd: height - vpx(220)//vpx(560)
 
           anchors {
             rightMargin: vpx(48)
@@ -220,7 +220,7 @@ LinearGradient {
         text: "≡ %1".arg(currentCollection.name) || "Not Found"
         color: "#f3f3f3"
         font.pixelSize: vpx(18)
-        font.family: globalFonts.condensed
+        font.family: subheaderFont.name//globalFonts.condensed
         font.capitalization: Font.AllUppercase
         Behavior on text {
           FadeAnimation {

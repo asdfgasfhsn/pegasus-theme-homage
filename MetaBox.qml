@@ -24,7 +24,7 @@ import QtQuick.Layouts 1.11
       text: metaTitle
       color: "black"
       width: parent.width
-      font.family: globalFonts.condensed
+      font.family: subheaderFont.name// globalFonts.condensed
       fontSizeMode: Text.Fit; minimumPixelSize: vpx(8); font.pixelSize: vpx(10)
       font.weight: Font.Bold
       font.capitalization: Font.AllUppercase
@@ -42,7 +42,7 @@ import QtQuick.Layouts 1.11
       color: "black"
       width: parent.width
       height: parent.height
-      font.family: globalFonts.sans
+      font.family: subheaderFont.name
       font.weight: Font.Bold
       font.capitalization: Font.AllUppercase
       fontSizeMode: Text.Fit; minimumPixelSize: vpx(10); font.pixelSize: vpx(44)

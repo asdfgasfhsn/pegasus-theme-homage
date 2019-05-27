@@ -144,10 +144,9 @@ FocusScope {
           }
         text: "%1".arg(currentCollection.name) || "Not Found"
         color: "black"
-        font.family: globalFonts.sansFont
+        font.family: headerFont.name
         fontSizeMode: Text.Fit; minimumPixelSize: vpx(30); font.pixelSize: vpx(52)
         font.capitalization: Font.AllUppercase
-        font.weight: Font.Bold
 
         Behavior on text {
           FadeAnimation {
@@ -164,7 +163,7 @@ FocusScope {
           text: "≡ %1 TITLES AVAILABLE".arg(currentCollection.games.count)
           color: "black"
           font.pixelSize: vpx(20)
-          font.family: globalFonts.condensed
+          font.family: subheaderFont.name
           Behavior on text {
             FadeAnimation {
                 target: systemItemCount

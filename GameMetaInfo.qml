@@ -27,7 +27,7 @@ Rectangle {
         spacing: vpx(10)
         MetaBox { metaTitle: 'PLAYERS'; metaContent: game.players }
         MetaBox { metaTitle: 'RATING'; metaContent: (game.rating == "") ? "N/A" : Math.round(game.rating * 100) + '%'}
-        MetaBox { metaTitle: 'YEAR RELEASED'; metaContent: ( Utils.formatDate(game.release) || "N/A" ) }
+        MetaBox { metaTitle: 'RELEASED'; metaContent: ( Utils.formatDate(game.release) || "N/A" ) }
         MetaBox { metaTitle: 'GENRE'; metaContent: ( game.genre || "N/A" ) }
         MetaBox { metaTitle: 'DEVELOPER'; metaContent: ( game.developer || "N/A" ) }
         MetaBox { metaTitle: 'PUBLISHER'; metaContent: ( game.publisher || "N/A" ) }
