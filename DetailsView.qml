@@ -174,7 +174,7 @@ LinearGradient {
     readonly property int paddingH: vpx(20)
     readonly property int paddingV: vpx(20)
     width: vpx(1260)
-    height: vpx(60)
+    height: vpx(64)
     color: "transparent"
 
     anchors {

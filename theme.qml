@@ -7,7 +7,7 @@ FocusScope {
     }
 
     FontLoader {id: generalFont; source: "fonts/Rubik-Regular.ttf" }
-    FontLoader {id: headerFont; source: "fonts/FredokaOne-Regular.ttf" }
+    FontLoader {id: headerFont; source: "fonts/OpenSans-ExtraBold.ttf" }
     FontLoader {id: subheaderFont; source: "fonts/FredokaOne-Regular.ttf" }
 
 

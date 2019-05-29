@@ -9,11 +9,11 @@ import QtQuick.Layouts 1.11
     color: "#f3f3f3"
 
     property real textWidth: {
-        if (textMetrics.width > vpx(1230)) return vpx(1230);
+        if (textMetrics.width > vpx(1220)) return vpx(1220);
                 return textMetrics.width;
     }
 
-    width: textWidth + vpx(10)
+    width: textWidth + vpx(20)
     height: parent.height
     clip: true
 
@@ -21,7 +21,7 @@ import QtQuick.Layouts 1.11
         id: textMetrics
         font.capitalization: Font.AllUppercase
         font.family: headerFont.name
-        font.pixelSize: vpx(52)
+        font.pixelSize: vpx(48)
         text: titletext
         visible: false
     }
@@ -31,16 +31,10 @@ import QtQuick.Layouts 1.11
         color: "black"
         text: textMetrics.text
         font: textMetrics.font
-        width: textWidth
-
+        width: textWidth + vpx(20)
         leftPadding: vpx(10)
 
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-
-        fontSizeMode: Text.Fit
-        minimumPixelSize: vpx(40)
-        Layout.maximumWidth: vpx(1100)
+        Layout.maximumWidth: vpx(1120)
         elide: Text.ElideRight
       }
    }
