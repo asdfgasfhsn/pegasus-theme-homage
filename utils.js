@@ -48,8 +48,24 @@ function formatPlayTime(playTime) {
 }
 
 function systemColor(input_str) {
+  var colorDict = {
+    "nes": "#ED1C24",
+    "snes": "#514689",
+    "n64": "#21397B",
+    "megadrive": "#17569B",
+    "mastersystem": "#17569B",
+    "neogeo": "#E60012",
+    "gba": "#14017C",
+    "gamecube": "#6545B2",
+  };
+
+  if (input_str in colorDict)
+    return colorDict[input_str]
+
   var colors = ["#711521", "#C1121C", "#F7BA0B", "#007243", "#00387b", "#514689", "#17569b"]
   var colorCount = colors.length
+
+
   // From: https://www.raphnet.net/design/console_colors/index.php
   // Famicom #711521
   // NES #C1121C
@@ -64,6 +80,9 @@ function systemColor(input_str) {
   // SNES CONSOLE GREY #b2b4b2
   // SNES DPAD GRAY #54585a
   // SNES BUTTON ZONE GRAY #707372
+
+  // Switch Red: #e60012
+  // Switch Neon Blue: #00c3e3
 
   var seed = input_str.charCodeAt(0) ^ input_str.charCodeAt(1);
   var moduloPosition = seed % colorCount
