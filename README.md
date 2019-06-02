@@ -10,13 +10,13 @@ Homage is theme for [Pegasus](http://pegasus-frontend.org) frontend inspired by 
 - Star field background that changes dynamically
 - Per system highlight colours (dynamically selected if not set in utils.js)
 - Saves position of last item highlighted in each collection
-- Video preview
+- Support for video snaps
 
 ### Wishlist
 - List view for RetroPie menu
 - Replace system images
 - Add in Developer, Publisher and Game Genre images for game information boxes
--
+- Control panel to allow volume control and other features
 
 ## Credits & Acknowldgements
 
@@ -34,6 +34,7 @@ Tested on the following OS's and hardware:
   - Windows 10 Intel 64-Bit w/ nVidia GPU
   - Ubuntu 18.04 Intel 64-Bit w/ nVidia and Intel GPU
   - RetroPie on Raspberry Pi 3B+ (some issues at present)
+  - OSX 10.13.6 w/ Intel GPU
 
 ## Screenshots
 
