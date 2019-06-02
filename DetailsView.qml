@@ -72,16 +72,20 @@ FocusScope {
         bottom: parent.bottom
       }
 
+// TODO: use loader to make loading grid/list views based on system type.
+// https://doc.qt.io/qt-5/qml-qtquick-loader.html
+// https://stackoverflow.com/questions/27695717/conditionally-include-component-based-on-property-value
+// NOTE: may require considerable re-work
       color: "transparent"
       clip: true
 
       GridView {
           id: grid
-          width: vpx(560)
-          height: parent.height//vpx(700)
+          width:  root.width / 2.22
+          height: parent.height
 
           preferredHighlightBegin: vpx(120)
-          preferredHighlightEnd: height - vpx(220)//vpx(560)
+          preferredHighlightEnd: root.height - vpx(220)
 
           anchors {
             rightMargin: vpx(48)
@@ -146,8 +150,8 @@ FocusScope {
                       grid.calcHeightRatio(imageWidth, imageHeight);
                     }
               }
+          }
       }
-  }
 }
 
 // Subtle gradient over the bottom of the grid.
@@ -213,14 +217,14 @@ LinearGradient {
     Text {
         id: collectionName
         anchors {
-          left: parent.left; //leftMargin: vpx(10)
-          top: metaBarBg.top;
+          left: parent.left
+          top: metaBarBg.top
           topMargin: vpx(4)
           }
         text: "≡ %1".arg(currentCollection.name) || "Not Found"
         color: "#f3f3f3"
         font.pixelSize: vpx(18)
-        font.family: subheaderFont.name//globalFonts.condensed
+        font.family: subheaderFont.name
         font.capitalization: Font.AllUppercase
         Behavior on text {
           FadeAnimation {
@@ -233,7 +237,7 @@ LinearGradient {
         id: gameDetails1
         game: currentGame
         color: "transparent"
-        width: vpx(620) // parent.width
+        width: parent.width / 2.06
         anchors {
           top: collectionName.bottom; topMargin: vpx(4)
           left: parent.left;
@@ -246,7 +250,8 @@ LinearGradient {
     id: gameDetails
     game: currentGame
     color: "#00f3f3f3"
-    width: vpx(620)
+    height: vpx(80)
+    width: parent.width / 2.06
     anchors {
       top: screenshotBox.bottom
       bottom: metaBar.top
@@ -257,7 +262,7 @@ LinearGradient {
   Rectangle {
     id: screenshotBox
     height: vpx(400)
-    width: vpx(620)
+    width: parent.width / 2.06
     color: "transparent"
     clip: false
     anchors {

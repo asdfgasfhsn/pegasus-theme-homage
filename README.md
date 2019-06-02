@@ -7,7 +7,16 @@ Homage is theme for [Pegasus](http://pegasus-frontend.org) frontend inspired by 
 [Download](https://github.com/asdfgasfhsn/pegasus-theme-homage/archive/master.zip) and extract to your [theme directory](http://pegasus-frontend.org/docs/user-guide/installing-themes). You can then select the theme in the settings menu of Pegasus.
 
 ## Features
-- TBA
+- Star field background that changes dynamically
+- Per system highlight colours (dynamically selected if not set in utils.js)
+- Saves position of last item highlighted in each collection
+- Video preview
+
+### Wishlist
+- List view for RetroPie menu
+- Replace system images
+- Add in Developer, Publisher and Game Genre images for game information boxes
+-
 
 ## Credits & Acknowldgements
 
@@ -30,11 +39,16 @@ Tested on the following OS's and hardware:
 
 <img width="1680" alt="homage_theme_0 1-screen_0" src="https://user-images.githubusercontent.com/30796598/58596068-c6aef100-82c6-11e9-9a89-30c25e1d5c35.png">
 
-<img width="1680" alt="homage_theme_0 1-screen_1" src="https://user-images.githubusercontent.com/30796598/58596070-c7478780-82c6-11e9-909f-2d4f84901e07.png">
+<img width="1680" alt="Screen Shot 2019-06-02 at 11 06 14 pm" src="https://user-images.githubusercontent.com/30796598/58760385-2c330400-858b-11e9-934a-0d29536715ef.png">
 
-<img width="1680" alt="homage_theme_0 1-screen_2" src="https://user-images.githubusercontent.com/30796598/58596071-c7478780-82c6-11e9-91b4-a170f178f563.png">
+<img width="1680" alt="Screen Shot 2019-06-02 at 11 03 44 pm" src="https://user-images.githubusercontent.com/30796598/58760386-2c330400-858b-11e9-8c48-0b5dcf1cd73b.png">
 
-<img width="1680" alt="homage_theme_0 1-screen_3" src="https://user-images.githubusercontent.com/30796598/58596072-c7478780-82c6-11e9-8371-3f638bbcf053.png">
+<img width="1680" alt="Screen Shot 2019-06-02 at 11 02 44 pm" src="https://user-images.githubusercontent.com/30796598/58760387-2c330400-858b-11e9-90e2-c2086cc0b3cb.png">
+
+<img width="1680" alt="Screen Shot 2019-06-02 at 11 01 27 pm" src="https://user-images.githubusercontent.com/30796598/58760388-2ccb9a80-858b-11e9-814b-d2f72409b6d6.png">
+
+<img width="1680" alt="Screen Shot 2019-06-02 at 11 00 43 pm" src="https://user-images.githubusercontent.com/30796598/58760389-2ccb9a80-858b-11e9-9927-5e086a69fec2.png">
+
 
 ## License
 

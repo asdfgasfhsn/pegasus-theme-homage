@@ -5,8 +5,8 @@ import QtGraphicalEffects 1.12
 
 Item {
   id: starFieldAF
-  width: vpx(1280)
-  height: vpx(720)
+  width: parent.width
+  height: parent.height
 
   ParticleSystem {
       id: particlesystemSmall

@@ -17,7 +17,7 @@ Rectangle {
         horizontalCenter: parent.horizontalCenter
       }
       width: parent.width
-      height: vpx(80)
+      height: parent.height
       color: "transparent"
       RowLayout {
         id: metadataRow1

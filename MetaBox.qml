@@ -14,7 +14,7 @@ import QtQuick.Layouts 1.11
     anchors.verticalCenter: root.verticalCenter
     anchors.horizontalCenter: root.horizontalCenter
     Rectangle {
-      id: ratingCircle
+      id: metaBox
       width: root.width
       height: root.height
       color: "#f6f6f6"
@@ -42,7 +42,7 @@ import QtQuick.Layouts 1.11
       color: "black"
       width: parent.width
       height: parent.height
-      font.family: headerFont.name //globalFonts.condensed
+      font.family: headerFont.name
       font.weight: Font.Bold
       font.capitalization: Font.AllUppercase
       fontSizeMode: Text.Fit; minimumPixelSize: vpx(10); font.pixelSize: vpx(44)

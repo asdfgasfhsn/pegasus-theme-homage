@@ -10,64 +10,11 @@ FocusScope {
     FontLoader {id: headerFont; source: "fonts/OpenSans-ExtraBold.ttf" }
     FontLoader {id: subheaderFont; source: "fonts/FredokaOne-Regular.ttf" }
 
-
-    // Generate the tiled background using gridview/rect delegates...
-    // TODO: figure out if this is a performance issue for RPi
-    // GridView {
-    //   id: bgRect
-    //   width: parent.width
-    //   height: parent.height
-    //
-    //   anchors {
-    //     top: parent.top
-    //     left: parent.left
-    //     right: parent.right
-    //     //fill: parent
-    //   }
-    //   model: 2600
-    //
-    //   cellWidth: vpx(20)
-    //   cellHeight: vpx(20)
-    //
-    //   delegate: Rectangle {
-    //     width: vpx(20)
-    //     height: vpx(20)
-    //     color: "black"
-    //     border.color: Qt.rgba(0.5, 0.5, 0.5, 0.1)
-    //     border.width: 1
-    //     radius: 0
-    //     }
-    //   }
-
-      // Timer {
-      //     id: timer
-      //     repeat: true
-      //     interval: 1000 / fps
-      //     onTriggered: { frame += 1 }
-      //     running: parent.running
-      // }
-
       StarField {
           anchors {
             left: parent.left
           }
       }
-
-    // TODO: Possibly use this method for performance reasons...
-    // Image {
-    //   source: 'assets/backgrounds/grid.png'
-    //   id: bgTile
-    //   width: parent.width
-    //   height: parent.height
-    //
-    //   anchors {
-    //     top: parent.top
-    //     left: parent.left
-    //     right: parent.right
-    //   }
-    //   opacity: 0.3
-    //   fillMode: Image.Tile
-    // }
 
     CollectionsView {
         id: collectionsView
