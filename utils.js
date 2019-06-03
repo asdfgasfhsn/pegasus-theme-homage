@@ -62,7 +62,7 @@ function systemColor(input_str) {
   if (input_str in colorDict)
     return colorDict[input_str]
 
-  var colors = ["#711521", "#C1121C", "#F7BA0B", "#007243", "#00387b", "#514689", "#17569b"]
+  var colors = ["#711521", "#C1121C", "#F7BA0B", "#007243", "#00387B", "#514689", "#17569b", "#00C3E3", "#E60012"]
   var colorCount = colors.length
 
 
