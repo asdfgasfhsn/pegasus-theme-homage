@@ -101,6 +101,7 @@ FocusScope {
     LinearGradient {
       width: parent.width
       height: parent.height
+
       anchors {
         top: parent.top
         right: parent.right
@@ -109,10 +110,10 @@ FocusScope {
       start: Qt.point(0, 0)
       end: Qt.point(0, height)
       gradient: Gradient {
-        GradientStop { position: 0.0; color: "#ff000000" }
-        GradientStop { position: 0.2; color: "#6017569b" }
-        GradientStop { position: 0.4; color: "#3017569b" }
-        GradientStop { position: 0.6; color: "#00000000" }
+        GradientStop { position: 0.0; color: "#00000000" }
+        GradientStop { position: 0.5; color: "#3017569b" }
+        GradientStop { position: 0.8; color: "#6017569b" }
+        GradientStop { position: 0.99; color: "#ff000000" }
       }
     }
 
@@ -122,7 +123,8 @@ FocusScope {
       height: vpx(120)
       // color: "transparent"
       anchors {
-        top: parent.top
+        //top: parent.top
+        bottom: parent.bottom
         //horizontalCenter: parent.horizontalCenter
         left: parent.left
         right: parent.right
