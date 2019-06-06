@@ -16,13 +16,13 @@ Item {
 
     Image {
         id: controllerImage
-        width: vpx(320)
-        height: vpx(320)
+        width: vpx(480)
+        height: vpx(480)
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         fillMode: Image.PreserveAspectFit
         smooth: true
-        source: shortName ? "assets/controllers/%1.png".arg(shortName) : ""
+        source: shortName ? "assets/controllers_svg/%1.svg".arg(shortName) : ""
         asynchronous: true
         scale: selected ? 1.0 : 0.555
         Behavior on scale { NumberAnimation { duration: 333 } }
