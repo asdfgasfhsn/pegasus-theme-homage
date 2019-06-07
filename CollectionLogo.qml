@@ -25,6 +25,24 @@ Item {
         source: shortName ? "assets/controllers_svg/%1.svg".arg(shortName) : ""
         asynchronous: true
         scale: selected ? 1.0 : 0.555
+        opacity: selected ? 1 : 0.5
         Behavior on scale { NumberAnimation { duration: 333 } }
+        Behavior on opacity { NumberAnimation { duration: 333 } }
+        layer.enabled: selected ? true : false
+        layer.effect: DropShadow {
+         //fast: true
+         horizontalOffset: 0
+         verticalOffset: 0
+         spread: 0.333
+         radius: vpx(20)
+         samples: 40
+         color: Utils.systemColor(shortName)
+         transparentBorder: true
+         // SequentialAnimation on color {
+         //       loops: Animation.Infinite
+         //       ColorAnimation { from: "#909932CC"; to: "#900000FF"; duration: 10000 }
+         //       ColorAnimation { from: "#900000FF"; to: "#909932CC"; duration: 10000 }
+         //   }
+        }
     }
 }
