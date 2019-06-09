@@ -33,7 +33,7 @@ Item {
          //fast: true
          horizontalOffset: 0
          verticalOffset: 0
-         spread: 0.333
+         spread: 0.444
          radius: vpx(20)
          samples: 40
          color: Utils.systemColor(shortName)

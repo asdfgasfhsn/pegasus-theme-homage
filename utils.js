@@ -57,12 +57,16 @@ function systemColor(input_str) {
     "neogeo": "#E60012",
     "gba": "#14017C",
     "gamecube": "#6545B2",
-  };
+    "n64": "#069330",
+    "pcengine": "#FFC001",
+    "gamegear": "#BD0E6D",
+    "fce": "#F0D878"
+    };
 
   if (input_str in colorDict)
     return colorDict[input_str]
 
-  var colors = ["#711521", "#C1121C", "#F7BA0B", "#007243", "#00387B", "#514689", "#17569b", "#00C3E3", "#E60012"]
+  var colors = ["#711521", "#C1121C", "#F7BA0B", "#007243", "#00387B", "#514689", "#17569b", "#00C3E3", "#E60012", "#FFC001"]
   var colorCount = colors.length
 
 
@@ -83,6 +87,10 @@ function systemColor(input_str) {
 
   // Switch Red: #e60012
   // Switch Neon Blue: #00c3e3
+  // https://www.colourlovers.com/palette/1898124/N64
+  // https://www.colourlovers.com/palette/505965/gamecube
+  // https://www.colourlovers.com/palette/4623974/Sega_Game_Gear
+  // https://www.colourlovers.com/palette/1111121/Famicom
 
   var seed = input_str.charCodeAt(0) ^ input_str.charCodeAt(1);
   var moduloPosition = seed % colorCount
