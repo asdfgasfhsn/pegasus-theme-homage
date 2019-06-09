@@ -38,18 +38,10 @@ Tested on the following OS's and hardware:
 
 ## Screenshots
 
-<img width="1680" alt="homage_theme_0 1-screen_0" src="https://user-images.githubusercontent.com/30796598/58596068-c6aef100-82c6-11e9-9a89-30c25e1d5c35.png">
-
-<img width="1680" alt="Screen Shot 2019-06-02 at 11 06 14 pm" src="https://user-images.githubusercontent.com/30796598/58760385-2c330400-858b-11e9-934a-0d29536715ef.png">
-
-<img width="1680" alt="Screen Shot 2019-06-02 at 11 03 44 pm" src="https://user-images.githubusercontent.com/30796598/58760386-2c330400-858b-11e9-8c48-0b5dcf1cd73b.png">
-
-<img width="1680" alt="Screen Shot 2019-06-02 at 11 02 44 pm" src="https://user-images.githubusercontent.com/30796598/58760387-2c330400-858b-11e9-90e2-c2086cc0b3cb.png">
-
-<img width="1680" alt="Screen Shot 2019-06-02 at 11 01 27 pm" src="https://user-images.githubusercontent.com/30796598/58760388-2ccb9a80-858b-11e9-814b-d2f72409b6d6.png">
-
-<img width="1680" alt="Screen Shot 2019-06-02 at 11 00 43 pm" src="https://user-images.githubusercontent.com/30796598/58760389-2ccb9a80-858b-11e9-9927-5e086a69fec2.png">
-
+![Screenshot from 2019-06-07 15-25-04](https://user-images.githubusercontent.com/30796598/59083023-fd28e380-8938-11e9-82d5-66666c4da8d4.png)
+![Screenshot from 2019-06-07 15-24-40](https://user-images.githubusercontent.com/30796598/59083026-ff8b3d80-8938-11e9-90d8-d45ff5d2b5a7.png)
+![Screenshot from 2019-06-07 15-24-59](https://user-images.githubusercontent.com/30796598/59083028-02862e00-8939-11e9-85ab-fb711c45226f.png)
+![Screenshot from 2019-06-07 15-24-35](https://user-images.githubusercontent.com/30796598/59083032-044ff180-8939-11e9-9291-26622727877f.png)
 
 ## License
 
