@@ -1,5 +1,6 @@
 import QtQuick 2.8
 import QtGraphicalEffects 1.12
+import "utils.js" as Utils
 
 Item {
   id: root
@@ -64,6 +65,13 @@ Item {
         smooth: false
     }
 
+    ColorOverlay {
+        id: rectImg2Overlay
+        anchors.fill: rect2Img
+        source: rect2Img
+        color: Utils.systemColor(gameData.title)
+    }
+
     Image {
         id: rectImg
         anchors.fill: parent
@@ -73,6 +81,13 @@ Item {
         sourceSize { width: 1920; height: 1080 }
         fillMode: Image.PreserveAspectCrop
         smooth: false
+    }
+
+    ColorOverlay {
+        id: rectImgOverlay
+        anchors.fill: rectImg
+        source: rectImg
+        color: Utils.systemColor(gameData.title)
     }
 
     FastBlur {
