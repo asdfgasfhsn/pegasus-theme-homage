@@ -1,5 +1,5 @@
 import QtQuick 2.8
-import QtQuick.Particles 2.8
+import QtQuick.Particles 2.12
 import QtGraphicalEffects 1.12
 
 
@@ -7,6 +7,8 @@ Item {
   id: starFieldAF
   width: parent.width
   height: parent.height
+
+  property var currentCollection
 
   ParticleSystem {
       id: particlesystemSmall
@@ -17,18 +19,22 @@ Item {
           source: "assets/starfield/star.png"
           groups: ["stars"]
           opacity: 0.3
+          // opacity: 0.05
           scale: 1
       }
 
       Emitter {
           id: starsemitter
           anchors.fill: parent
-          emitRate: 100 // parent.width / 10
-          lifeSpan: 20000
-          lifeSpanVariation: 5000
+          emitRate: 100 // 10000
+          lifeSpan: 20000 // 1000
+          lifeSpanVariation: 5000 // 500
           startTime: 5000
           group: "stars"
-          endSize: vpx(10)
+          endSize: vpx(5)
+          // shape: MaskShape {
+          //   source: currentCollection.shortName ? "assets/controllers_svg/%1.svg".arg(currentCollection.shortName) : ""
+          // }
       }
   }
 

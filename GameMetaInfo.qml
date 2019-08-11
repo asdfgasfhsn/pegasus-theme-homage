@@ -28,9 +28,9 @@ Rectangle {
         MetaBox { metaTitle: 'PLAYERS'; metaContent: game.players }
         MetaBox { metaTitle: 'RATING'; metaContent: (game.rating == "") ? "N/A" : Math.round(game.rating * 100) + '%'}
         MetaBox { metaTitle: 'RELEASED'; metaContent: ( Utils.formatDate(game.release) || "N/A" ) }
-        MetaBox { metaTitle: 'GENRE'; metaContent: ( game.genre || "N/A" ) }
-        MetaBox { metaTitle: 'DEVELOPER'; metaContent: ( game.developer || "N/A" ) }
-        MetaBox { metaTitle: 'PUBLISHER'; metaContent: ( game.publisher || "N/A" ) }
+        MetaBox { metaTitle: 'GENRE'; metaContent: ( game.genreList[0] || "N/A" ) }
+        MetaBox { metaTitle: 'DEVELOPER'; metaContent: ( game.developerList[0]  || "N/A" ) }
+        MetaBox { metaTitle: 'PUBLISHER'; metaContent: ( game.publisherList[0] || "N/A" ) }
         MetaBox { metaTitle: 'LAST PLAYED'; metaContent: Utils.formatLastPlayed(game.lastPlayed) }
         MetaBox { metaTitle: 'TIME PLAYED'; metaContent: Utils.formatPlayTime(game.playTime) }
       }

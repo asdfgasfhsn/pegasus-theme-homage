@@ -62,6 +62,13 @@ FocusScope {
     opacity: 0.555
   }
 
+  // ColorOverlay {
+  //     id: backgroundimageOverlay
+  //     anchors.fill: backgroundimage
+  //     source: backgroundimage
+  //     color: Utils.systemColor(currentCollection.shortName)
+  //   }
+
 // GridView start!
   Rectangle {
       id: content

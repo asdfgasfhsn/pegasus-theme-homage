@@ -11,6 +11,7 @@ FocusScope {
     FontLoader {id: subheaderFont; source: "fonts/FredokaOne-Regular.ttf" }
 
       StarField {
+          currentCollection: collectionsView.currentCollection
           anchors {
             left: parent.left
           }
