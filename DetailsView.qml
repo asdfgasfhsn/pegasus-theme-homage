@@ -1,4 +1,4 @@
-import QtQuick 2.8 // note the version: Text padding is used below and that was added in 2.7 as per docs
+import QtQuick 2.12 // DragHandler (added in 2.12) is used for swipe gestures below
 import QtQuick.Layouts 1.11
 import QtGraphicalEffects 1.12
 import "utils.js" as Utils // some helper functions
@@ -69,35 +69,35 @@ FocusScope {
   //     color: Utils.systemColor(currentCollection.shortName)
   //   }
 
+  // Touch/mouse swipe layer. Sits above BackgroundImage but below the GridView
+  // wrapper (content) in document order, so the GridView still gets its own
+  // drag events on the right side of the view, while swipes on the decorative
+  // areas (screenshot, metadata, background) reach the DragHandler.
   Item {
-      id: backButton
-      width: vpx(56)
-      height: vpx(56)
-      anchors {
-          top: parent.top; topMargin: vpx(20)
-          left: parent.left; leftMargin: vpx(20)
-      }
-      z: 10
+      id: gestureLayer
+      anchors.fill: parent
 
-      Rectangle {
-          anchors.fill: parent
-          radius: width / 2
-          color: "#80000000"
-          border.color: "#f3f3f3"
-          border.width: vpx(2)
-      }
+      readonly property real commitThreshold: vpx(120)
+      readonly property real axisBias: 1.2
 
-      Text {
-          anchors.centerIn: parent
-          text: "‹"
-          color: "#f3f3f3"
-          font.pixelSize: vpx(36)
-          font.family: headerFont.name
-      }
+      DragHandler {
+          id: swipeHandler
+          target: null
 
-      MouseArea {
-          anchors.fill: parent
-          onClicked: root.cancel()
+          onActiveChanged: {
+              if (active) return;
+              var dx = centroid.position.x - centroid.pressPosition.x;
+              var dy = centroid.position.y - centroid.pressPosition.y;
+              var absX = Math.abs(dx);
+              var absY = Math.abs(dy);
+
+              if (absY > absX * gestureLayer.axisBias && dy > gestureLayer.commitThreshold) {
+                  root.cancel();
+              } else if (absX > absY * gestureLayer.axisBias && absX > gestureLayer.commitThreshold) {
+                  if (dx < 0) root.nextCollection();
+                  else        root.prevCollection();
+              }
+          }
       }
   }
 
