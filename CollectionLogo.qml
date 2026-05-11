@@ -48,8 +48,13 @@ Item {
         }
     }
 
+    // Hit region matches the visible image, not the delegate's full-screen-width
+    // slot. The PathView gives every delegate `width: root.width`, so anchoring
+    // to parent would make adjacent delegates' hit regions overlap heavily; the
+    // PathView's z-order then routes centre-of-screen clicks to a neighbour
+    // instead of the centred logo.
     MouseArea {
-        anchors.fill: parent
+        anchors.fill: controllerImage
         onClicked: logoRoot.clicked()
     }
 }
