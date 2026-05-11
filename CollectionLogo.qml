@@ -4,10 +4,12 @@ import "utils.js" as Utils
 // The collection logo on the collection carousel. Just an image that gets scaled
 // and more visible when selected. Also has a fallback text if there's no image.
 Item {
+    id: logoRoot
     property string longName: "" // set on the PathView side
     property string shortName: "" // set on the PathView side
     readonly property bool selected: PathView.isCurrentItem
 
+    signal clicked()
 
     width: root.width
     height: parent.width
@@ -44,5 +46,15 @@ Item {
          //       ColorAnimation { from: "#900000FF"; to: "#909932CC"; duration: 10000 }
          //   }
         }
+    }
+
+    // Hit region matches the visible image, not the delegate's full-screen-width
+    // slot. The PathView gives every delegate `width: root.width`, so anchoring
+    // to parent would make adjacent delegates' hit regions overlap heavily; the
+    // PathView's z-order then routes centre-of-screen clicks to a neighbour
+    // instead of the centred logo.
+    MouseArea {
+        anchors.fill: controllerImage
+        onClicked: logoRoot.clicked()
     }
 }

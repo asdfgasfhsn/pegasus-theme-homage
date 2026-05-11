@@ -25,6 +25,10 @@ PathView {
     preferredHighlightBegin: 0.5
     preferredHighlightEnd: 0.5
 
+    // Touch / mouse drag — flick anywhere across the carousel
+    interactive: true
+    dragMargin: width / 2
+
     // Create and position the path
     pathItemCount: Math.ceil(width / itemWidth) + 2
     path: Path {
