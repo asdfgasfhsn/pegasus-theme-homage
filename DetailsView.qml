@@ -145,6 +145,14 @@ FocusScope {
 
               game: modelData
 
+              onClicked: {
+                  if (GridView.isCurrentItem) {
+                      root.launchGame();
+                  } else {
+                      grid.currentIndex = index;
+                  }
+              }
+
               imageHeightRatio: {
                   if (grid.firstImageLoaded) return grid.cellHeightRatio;
                   return 0.5;
