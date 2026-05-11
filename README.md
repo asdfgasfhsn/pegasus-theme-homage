@@ -11,6 +11,7 @@ Homage is theme for [Pegasus](http://pegasus-frontend.org) frontend inspired by 
 - Per system highlight colours (dynamically selected if not set in utils.js)
 - Saves position of last item highlighted in each collection
 - Support for video snaps
+- Touch and mouse input (Android + desktop): tap to navigate, swipe carousels, on-screen back button
 
 ### Wishlist
 - List view for RetroPie menu
@@ -34,6 +35,8 @@ Tested on the following OS's and hardware:
   - Ubuntu 18.04 Intel 64-Bit w/ nVidia and Intel GPU
   - RetroPie on Raspberry Pi 3B+
   - OSX 10.13.6 w/ Intel GPU
+
+Touch input is supported on Android builds of Pegasus: tap a system logo to select it (tap again to enter), swipe the carousel, tap a game tile to select and tap the selected tile to launch. The top-left back button returns from the details view; Android's gesture-back is also handled.
 
 ## Screenshots
 <img width="1392" alt="Screen Shot 2019-08-11 at 10 08 34 pm" src="https://user-images.githubusercontent.com/30796598/62833639-86380000-bc85-11e9-96ab-7e9e590d4020.png">
