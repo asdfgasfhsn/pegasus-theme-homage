@@ -76,6 +76,13 @@ FocusScope {
             delegate: CollectionLogo {
                 longName: modelData.name
                 shortName: modelData.shortName
+                onClicked: {
+                    if (logoAxis.currentIndex === index) {
+                        logoAxis.itemSelected();
+                    } else {
+                        logoAxis.currentIndex = index;
+                    }
+                }
             }
 
             focus: true

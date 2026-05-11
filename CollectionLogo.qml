@@ -8,6 +8,7 @@ Item {
     property string shortName: "" // set on the PathView side
     readonly property bool selected: PathView.isCurrentItem
 
+    signal clicked()
 
     width: root.width
     height: parent.width
@@ -44,5 +45,10 @@ Item {
          //       ColorAnimation { from: "#900000FF"; to: "#909932CC"; duration: 10000 }
          //   }
         }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: parent.clicked()
     }
 }
