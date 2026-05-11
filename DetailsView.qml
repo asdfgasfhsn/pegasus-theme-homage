@@ -33,7 +33,7 @@ FocusScope {
             launchGame();
             return;
         }
-        if (api.keys.isCancel(event)) {
+        if (api.keys.isCancel(event) || event.key === Qt.Key_Back) {
             event.accepted = true;
             cancel();
             return;
@@ -68,6 +68,38 @@ FocusScope {
   //     source: backgroundimage
   //     color: Utils.systemColor(currentCollection.shortName)
   //   }
+
+  Item {
+      id: backButton
+      width: vpx(56)
+      height: vpx(56)
+      anchors {
+          top: parent.top; topMargin: vpx(20)
+          left: parent.left; leftMargin: vpx(20)
+      }
+      z: 10
+
+      Rectangle {
+          anchors.fill: parent
+          radius: width / 2
+          color: "#80000000"
+          border.color: "#f3f3f3"
+          border.width: vpx(2)
+      }
+
+      Text {
+          anchors.centerIn: parent
+          text: "‹"
+          color: "#f3f3f3"
+          font.pixelSize: vpx(36)
+          font.family: headerFont.name
+      }
+
+      MouseArea {
+          anchors.fill: parent
+          onClicked: root.cancel()
+      }
+  }
 
 // GridView start!
   Rectangle {
