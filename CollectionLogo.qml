@@ -4,6 +4,7 @@ import "utils.js" as Utils
 // The collection logo on the collection carousel. Just an image that gets scaled
 // and more visible when selected. Also has a fallback text if there's no image.
 Item {
+    id: logoRoot
     property string longName: "" // set on the PathView side
     property string shortName: "" // set on the PathView side
     readonly property bool selected: PathView.isCurrentItem
@@ -49,6 +50,6 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: parent.clicked()
+        onClicked: logoRoot.clicked()
     }
 }
