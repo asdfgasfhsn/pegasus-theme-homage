@@ -30,11 +30,14 @@ With out the following repos this theme wouldn't exist. Thank you for the inspir
 
 This theme has been designed for the 16:9 aspect ratio only. It has been tested with both 1080p (1920x1080) and 1440p (2560x1440) resolutions.
 
-Tested on the following OS's and hardware:
-  - Windows 10 Intel 64-Bit w/ nVidia GPU
-  - Ubuntu 18.04 Intel 64-Bit w/ nVidia and Intel GPU
+Designed against the Pegasus Frontend stable line (Qt 5.15-based, weekly release 2024w38 and later). QML imports are pinned to Qt 5.15. A Qt 6 port of Pegasus is in progress upstream; this theme has not yet been tested against it (see [issue #1167](https://github.com/mmatyas/pegasus-frontend/issues/1167)).
+
+Previously tested on:
+  - Windows 10 (Intel + nVidia)
+  - Linux (Intel + nVidia / Intel GPU)
   - RetroPie on Raspberry Pi 3B+
-  - OSX 10.13.6 w/ Intel GPU
+  - macOS (Intel)
+  - Android (touch input)
 
 Touch input is supported on Android builds of Pegasus: tap a system logo to select it (tap again to enter), swipe the carousel, tap a game tile to select and tap the selected tile to launch. In the details view, swipe down on the surrounding area (anywhere outside the game grid) to return to the system carousel, and swipe left/right to switch between systems without leaving the details view. Android's gesture-back is also handled.
 

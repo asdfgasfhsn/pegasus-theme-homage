@@ -1,5 +1,5 @@
-import QtQuick 2.8
-import QtGraphicalEffects 1.12
+import QtQuick 2.15
+import QtGraphicalEffects 1.15
 import "utils.js" as Utils
 // The collection logo on the collection carousel. Just an image that gets scaled
 // and more visible when selected. Also has a fallback text if there's no image.
