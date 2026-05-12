@@ -20,7 +20,7 @@ import QtQuick.Layouts 1.15
     Text {
         id: textMetrics
         font.capitalization: Font.AllUppercase
-        font.family: headerFont.name
+        font.family: globalFonts.sansBold || headerFont.name
         font.pixelSize: vpx(48)
         text: titletext
         visible: false

@@ -42,7 +42,7 @@ import QtQuick.Layouts 1.15
       color: "black"
       width: parent.width
       height: parent.height
-      font.family: headerFont.name
+      font.family: globalFonts.sansBold || headerFont.name
       font.weight: Font.Bold
       font.capitalization: Font.AllUppercase
       fontSizeMode: Text.Fit; minimumPixelSize: vpx(10); font.pixelSize: vpx(44)
