@@ -1,5 +1,5 @@
 import QtQuick 2.15 // DragHandler is used for swipe gestures below
-import QtQuick.Layouts 1.11
+import QtQuick.Layouts 1.15
 import QtGraphicalEffects 1.12
 import "utils.js" as Utils // some helper functions
 
