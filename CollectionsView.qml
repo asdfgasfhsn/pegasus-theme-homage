@@ -1,4 +1,4 @@
-import QtQuick 2.8
+import QtQuick 2.15
 import QtGraphicalEffects 1.12
 import "utils.js" as Utils // some helper functions
 // The collections view consists of two carousels, one for the collection logo bar

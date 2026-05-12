@@ -1,4 +1,4 @@
-import QtQuick 2.8
+import QtQuick 2.15
 import QtQuick.Particles 2.12
 import QtGraphicalEffects 1.12
 
