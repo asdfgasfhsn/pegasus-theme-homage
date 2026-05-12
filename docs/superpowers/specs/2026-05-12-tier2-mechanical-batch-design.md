@@ -22,18 +22,9 @@ Only the bold header font is migrated. `Rubik-Regular` (body) and `FredokaOne-Re
 
 ### Pattern
 
-Inline the fallback at each call site. There are exactly two of them.
+Inline the fallback at each call site. There are exactly three of them.
 
-`HeaderText.qml:23`:
-
-```qml
-// before
-font.family: headerFont.name
-// after
-font.family: globalFonts.sansBold || headerFont.name
-```
-
-`MetaBox.qml:45`:
+`HeaderText.qml:23`, `MetaBox.qml:45`, and `CollectionsView.qml:156`:
 
 ```qml
 // before
@@ -41,6 +32,8 @@ font.family: headerFont.name
 // after
 font.family: globalFonts.sansBold || headerFont.name
 ```
+
+(`CollectionsView.qml:156` is the active-collection-name header rendered over the carousel — same `headerFont` reference, same migration.)
 
 The `FontLoader { id: headerFont; source: "fonts/OpenSans-ExtraBold.ttf" }` declaration in `theme.qml:10` is kept verbatim — it is now only used as a fallback when `globalFonts.sansBold` is unset (empty string).
 
@@ -53,12 +46,13 @@ Use the legacy alias `globalFonts.sansBold`. Pegasus's `main.qml` exposes both `
 
 ### Why inline vs. centralised property
 
-Considered: adding a `property string headerFontFamily` on the root in `theme.qml` and threading it down to `HeaderText` / `MetaBox` via per-component exported properties. Rejected — two call sites, one short expression, no need for new component API surface. If a future change adds a third or fourth header consumer, revisit then.
+Considered: adding a `property string headerFontFamily` on the root in `theme.qml` and threading it down to consumers via per-component exported properties. Rejected — three call sites, one short expression, no need for new component API surface. If a future change adds a fourth header consumer, revisit then.
 
 ### Affected files
 
 - `HeaderText.qml` — one line.
 - `MetaBox.qml` — one line.
+- `CollectionsView.qml` — one line.
 - `theme.qml` — no change.
 - `fonts/OpenSans-ExtraBold.ttf` and `fonts/OpenSans-LICENSE.txt` — no change (still bundled as fallback).
 
