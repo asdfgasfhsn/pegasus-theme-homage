@@ -9,7 +9,22 @@ FocusScope {
 
     property var currentCollection
     property alias currentGameIndex: grid.currentIndex
-    readonly property var currentGame: currentCollection.games.get(currentGameIndex)
+    property string sortMode: "default"
+    readonly property var sortedGames: Utils.sortGames(currentCollection ? currentCollection.games : null, sortMode)
+    readonly property var currentGame: sortedGames[currentGameIndex]
+
+    function toggleSortMode() {
+        if (currentCollection && currentCollection.shortName === "@favourites") return;
+        sortMode = (sortMode === "default") ? "favouritesFirst" : "default";
+        if (currentCollection) api.memory.set(currentCollection.shortName + 'SortMode', sortMode);
+    }
+
+    onCurrentCollectionChanged: {
+        if (currentCollection) {
+            sortMode = api.memory.get(currentCollection.shortName + 'SortMode') || "default";
+        }
+        if (grid) grid.cells_need_recalc();
+    }
 
     width: parent.width
     height: parent.height
@@ -46,6 +61,16 @@ FocusScope {
         if (api.keys.isPrevPage(event)) {
             event.accepted = true;
             prevCollection();
+            return;
+        }
+        if (api.keys.isDetails(event)) {
+            event.accepted = true;
+            currentGame.favorite = !currentGame.favorite;
+            return;
+        }
+        if (api.keys.isFilters(event)) {
+            event.accepted = true;
+            toggleSortMode();
             return;
         }
     }
@@ -145,9 +170,7 @@ FocusScope {
           highlightFollowsCurrentItem: true
           highlightRangeMode: GridView.StrictlyEnforceRange
 
-          model: currentCollection.games
-          onModelChanged: cells_need_recalc()
-          onCountChanged: cells_need_recalc()
+          model: sortedGames
 
           property real columnCount: {
               if (cellHeightRatio > 1.2) return 5;
@@ -184,6 +207,7 @@ FocusScope {
                       grid.currentIndex = index;
                   }
               }
+              onLongPressed: modelData.favorite = !modelData.favorite
 
               imageHeightRatio: {
                   if (grid.firstImageLoaded) return grid.cellHeightRatio;
@@ -278,6 +302,21 @@ LinearGradient {
               target: collectionName
             }
           }
+      }
+
+      Text {
+          id: sortIndicator
+          visible: sortMode !== "default" && currentCollection && currentCollection.shortName !== "@favourites"
+          anchors {
+              left: collectionName.right
+              leftMargin: vpx(12)
+              verticalCenter: collectionName.verticalCenter
+          }
+          text: "♥ first"
+          color: Utils.systemColor(currentCollection ? currentCollection.shortName : "")
+          font.pixelSize: vpx(14)
+          font.family: subheaderFont.name
+          font.capitalization: Font.AllUppercase
       }
 
       GameMetaInfo {

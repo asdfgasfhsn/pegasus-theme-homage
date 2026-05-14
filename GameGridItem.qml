@@ -40,6 +40,7 @@ Rectangle {
 
     signal clicked()
     signal doubleClicked()
+    signal longPressed()
     signal imageLoaded(int imgWidth, int imgHeight)
 
     scale: selected ? 1.5 : 1
@@ -120,9 +121,37 @@ Rectangle {
         }
     }
 
+    Text {
+        id: favoriteIndicator
+        visible: game.favorite
+        text: "❤"
+        color: systemColor
+        font.pixelSize: vpx(28)
+        style: Text.Outline
+        styleColor: "#000000"
+        anchors {
+            bottom: parent.bottom
+            right: parent.right
+            bottomMargin: vpx(6)
+            rightMargin: vpx(6)
+        }
+        z: 5
+    }
+
     MouseArea {
         anchors.fill: parent
-        onClicked: root.clicked()
+        property bool longPressFired: false
+        onPressAndHold: {
+            longPressFired = true;
+            root.longPressed();
+        }
+        onClicked: {
+            if (longPressFired) {
+                longPressFired = false;
+                return;
+            }
+            root.clicked();
+        }
         onDoubleClicked: root.doubleClicked()
     }
 }

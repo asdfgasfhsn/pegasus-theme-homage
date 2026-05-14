@@ -20,7 +20,7 @@ FocusScope {
     // Shortcut for the currently selected collection. They will be used
     // by the Details view too, for example to show the collection's logo.
     property alias currentCollectionIndex: logoAxis.currentIndex
-    readonly property var currentCollection: logoAxis.model.get(logoAxis.currentIndex)
+    readonly property var currentCollection: logoAxis.model[logoAxis.currentIndex]
 
     // These functions can be called by other elements of the theme if the collection
     // has to be changed manually. See the connection between the Collection and
@@ -41,7 +41,7 @@ FocusScope {
         anchors.fill: parent
         itemWidth: width
 
-        model: api.collections
+        model: rootTheme.combinedCollections
         delegate: bgAxisItem
         currentIndex: logoAxis.currentIndex
 
@@ -72,7 +72,7 @@ FocusScope {
             anchors.fill: parent
             itemWidth: vpx(460)
 
-            model: api.collections
+            model: rootTheme.combinedCollections
             delegate: CollectionLogo {
                 longName: modelData.name
                 shortName: modelData.shortName
@@ -169,7 +169,7 @@ FocusScope {
             left: parent.left; leftMargin: vpx(20)
             top: systemNameHeader.bottom
             }
-          text: "≡ %1 TITLES AVAILABLE".arg(currentCollection.games.count)
+          text: "≡ %1 TITLES AVAILABLE".arg(Utils.gameCount(currentCollection.games))
           color: "black"
           font.pixelSize: vpx(20)
           font.family: subheaderFont.name

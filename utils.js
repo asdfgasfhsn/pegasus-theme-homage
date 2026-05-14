@@ -96,3 +96,53 @@ function systemColor(input_str) {
   var moduloPosition = seed % colorCount
   return colors[moduloPosition]
 }
+
+function getGame(games, idx) {
+    if (games && typeof games.get === 'function') return games.get(idx);
+    if (games) return games[idx];
+    return null;
+}
+
+function gameCount(games) {
+    if (!games) return 0;
+    return (games.count !== undefined) ? games.count : games.length;
+}
+
+function findInitialGameIndex(memory, collection, games) {
+    if (!collection) return 0;
+    var src = games || collection.games;
+    var savedTitle = memory.get(collection.shortName + 'LastGameTitle');
+    var count = gameCount(src);
+    if (savedTitle) {
+        for (var i = 0; i < count; i++) {
+            var g = getGame(src, i);
+            if (g && g.title === savedTitle) return i;
+        }
+    }
+    // Legacy fallback — index-based persistence from before the migration
+    var legacy = memory.get(collection.shortName + 'GameIndex');
+    if (legacy !== undefined && legacy !== null && legacy >= 0 && legacy < count) return legacy;
+    return 0;
+}
+
+function persistCursor(memory, collection, games, gameIndex) {
+    if (!collection) return;
+    memory.set('lastCollectionShortName', collection.shortName);
+    var game = getGame(games || collection.games, gameIndex);
+    if (game) memory.set(collection.shortName + 'LastGameTitle', game.title);
+}
+
+function sortGames(games, mode) {
+    var arr = [];
+    var count = gameCount(games);
+    if (mode === "favouritesFirst") {
+        var favs = [], rest = [];
+        for (var i = 0; i < count; i++) {
+            var g = getGame(games, i);
+            (g.favorite ? favs : rest).push(g);
+        }
+        return favs.concat(rest);
+    }
+    for (var j = 0; j < count; j++) arr.push(getGame(games, j));
+    return arr;
+}
