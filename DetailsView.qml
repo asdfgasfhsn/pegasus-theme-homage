@@ -48,6 +48,11 @@ FocusScope {
             prevCollection();
             return;
         }
+        if (api.keys.isDetails(event)) {
+            event.accepted = true;
+            currentGame.favorite = !currentGame.favorite;
+            return;
+        }
     }
 
   BackgroundImage {
@@ -184,6 +189,7 @@ FocusScope {
                       grid.currentIndex = index;
                   }
               }
+              onLongPressed: modelData.favorite = !modelData.favorite
 
               imageHeightRatio: {
                   if (grid.firstImageLoaded) return grid.cellHeightRatio;
