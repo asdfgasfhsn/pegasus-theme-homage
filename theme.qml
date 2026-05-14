@@ -3,23 +3,62 @@ import QtGraphicalEffects 1.15
 import "utils.js" as Utils
 
 FocusScope {
+    id: rootTheme
+
+    property var favouriteGames: {
+        var out = [];
+        for (var i = 0; i < api.allGames.count; i++) {
+            var g = api.allGames.get(i);
+            if (g.favorite) out.push(g);
+        }
+        return out;
+    }
+    property bool hasFavourites: favouriteGames.length > 0
+    property var favouritesPseudoCollection: ({
+        name: "Favourites",
+        shortName: "@favourites",
+        games: favouriteGames,
+        assets: { logo: "" }
+    })
+    property var combinedCollections: {
+        var arr = [];
+        if (hasFavourites) arr.push(favouritesPseudoCollection);
+        for (var i = 0; i < api.collections.count; i++) arr.push(api.collections.get(i));
+        return arr;
+    }
+
+    onHasFavouritesChanged: {
+        if (!hasFavourites
+            && detailsView.focus
+            && detailsView.currentCollection
+            && detailsView.currentCollection.shortName === "@favourites") {
+            detailsView.cancel();
+        }
+    }
+
     Component.onCompleted: {
-        // Identity-based persistence with legacy fallback.
         var savedShortName = api.memory.get('lastCollectionShortName');
         var startIndex = 0;
         if (savedShortName) {
-            for (var i = 0; i < api.collections.count; i++) {
-                if (api.collections.get(i).shortName === savedShortName) {
+            for (var i = 0; i < combinedCollections.length; i++) {
+                if (combinedCollections[i].shortName === savedShortName) {
                     startIndex = i;
                     break;
                 }
             }
         } else {
-            // One-time migration from the pre-identity scheme.
             var legacyIdx = api.memory.get('collectionIndex');
             if (legacyIdx !== undefined && legacyIdx !== null && legacyIdx >= 0 && legacyIdx < api.collections.count) {
-                startIndex = legacyIdx;
-                api.memory.set('lastCollectionShortName', api.collections.get(legacyIdx).shortName);
+                // Legacy index was into api.collections (pre-virtual-entry).
+                // Map it onto combinedCollections by shortName.
+                var legacyShortName = api.collections.get(legacyIdx).shortName;
+                for (var j = 0; j < combinedCollections.length; j++) {
+                    if (combinedCollections[j].shortName === legacyShortName) {
+                        startIndex = j;
+                        api.memory.set('lastCollectionShortName', legacyShortName);
+                        break;
+                    }
+                }
             }
         }
         collectionsView.currentCollectionIndex = startIndex;
