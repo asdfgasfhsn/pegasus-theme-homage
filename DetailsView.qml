@@ -65,7 +65,9 @@ FocusScope {
         }
         if (api.keys.isDetails(event)) {
             event.accepted = true;
+            var preShortName = currentCollection ? currentCollection.shortName : "";
             currentGame.favorite = !currentGame.favorite;
+            if (preShortName && preShortName !== "@favourites") rootTheme.retargetCarousel(preShortName);
             return;
         }
         if (api.keys.isFilters(event)) {
@@ -207,7 +209,11 @@ FocusScope {
                       grid.currentIndex = index;
                   }
               }
-              onLongPressed: modelData.favorite = !modelData.favorite
+              onLongPressed: {
+                  var preShortName = root.currentCollection ? root.currentCollection.shortName : "";
+                  modelData.favorite = !modelData.favorite;
+                  if (preShortName && preShortName !== "@favourites") rootTheme.retargetCarousel(preShortName);
+              }
 
               imageHeightRatio: {
                   if (grid.firstImageLoaded) return grid.cellHeightRatio;

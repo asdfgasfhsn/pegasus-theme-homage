@@ -36,6 +36,23 @@ FocusScope {
         }
     }
 
+    // After a favourite is toggled, combinedCollections may grow (favourites
+    // entry appearing) or shrink (last favourite removed). The carousel's
+    // currentIndex stays the same numerically, so it ends up pointing at a
+    // different collection. Callers pass the shortName they want the carousel
+    // to stay on and we re-target by lookup.
+    function retargetCarousel(shortName) {
+        if (!shortName) return;
+        for (var i = 0; i < combinedCollections.length; i++) {
+            if (combinedCollections[i].shortName === shortName) {
+                if (collectionsView.currentCollectionIndex !== i) {
+                    collectionsView.currentCollectionIndex = i;
+                }
+                return;
+            }
+        }
+    }
+
     Component.onCompleted: {
         var savedShortName = api.memory.get('lastCollectionShortName');
         var startIndex = 0;
