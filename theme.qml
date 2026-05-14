@@ -1,9 +1,28 @@
 import QtQuick 2.15
 import QtGraphicalEffects 1.15
+import "utils.js" as Utils
 
 FocusScope {
     Component.onCompleted: {
-        collectionsView.currentCollectionIndex = api.memory.get('collectionIndex') || 0;
+        // Identity-based persistence with legacy fallback.
+        var savedShortName = api.memory.get('lastCollectionShortName');
+        var startIndex = 0;
+        if (savedShortName) {
+            for (var i = 0; i < api.collections.count; i++) {
+                if (api.collections.get(i).shortName === savedShortName) {
+                    startIndex = i;
+                    break;
+                }
+            }
+        } else {
+            // One-time migration from the pre-identity scheme.
+            var legacyIdx = api.memory.get('collectionIndex');
+            if (legacyIdx !== undefined && legacyIdx !== null && legacyIdx >= 0 && legacyIdx < api.collections.count) {
+                startIndex = legacyIdx;
+                api.memory.set('lastCollectionShortName', api.collections.get(legacyIdx).shortName);
+            }
+        }
+        collectionsView.currentCollectionIndex = startIndex;
     }
 
     FontLoader {id: generalFont; source: "fonts/Rubik-Regular.ttf" }
@@ -23,7 +42,7 @@ FocusScope {
 
         focus: true
         onCollectionSelected: {
-          detailsView.currentGameIndex = api.memory.get(currentCollection.shortName + 'GameIndex') || 0;
+          detailsView.currentGameIndex = Utils.findInitialGameIndex(api.memory, currentCollection);
           detailsView.focus = true
         }
     }
@@ -34,25 +53,21 @@ FocusScope {
         currentCollection: collectionsView.currentCollection
 
         onCancel: {
-          api.memory.set('collectionIndex', collectionsView.currentCollectionIndex);
-          api.memory.set(currentCollection.shortName + 'GameIndex', currentGameIndex);
+          Utils.persistCursor(api.memory, currentCollection, currentGameIndex);
           collectionsView.focus = true
         }
         onNextCollection: {
-          api.memory.set('collectionIndex', collectionsView.currentCollectionIndex);
-          api.memory.set(currentCollection.shortName + 'GameIndex', currentGameIndex);
+          Utils.persistCursor(api.memory, currentCollection, currentGameIndex);
           collectionsView.selectNext()
-          detailsView.currentGameIndex = api.memory.get(currentCollection.shortName + 'GameIndex') || 0;
+          detailsView.currentGameIndex = Utils.findInitialGameIndex(api.memory, currentCollection);
         }
         onPrevCollection: {
-          api.memory.set('collectionIndex', collectionsView.currentCollectionIndex);
-          api.memory.set(currentCollection.shortName + 'GameIndex', currentGameIndex);
+          Utils.persistCursor(api.memory, currentCollection, currentGameIndex);
           collectionsView.selectPrev()
-          detailsView.currentGameIndex = api.memory.get(currentCollection.shortName + 'GameIndex') || 0;
+          detailsView.currentGameIndex = Utils.findInitialGameIndex(api.memory, currentCollection);
         }
         onLaunchGame: {
-            api.memory.set('collectionIndex', collectionsView.currentCollectionIndex);
-            api.memory.set(currentCollection.shortName + 'GameIndex', currentGameIndex);
+            Utils.persistCursor(api.memory, currentCollection, currentGameIndex);
             currentGame.launch();
         }
     }
