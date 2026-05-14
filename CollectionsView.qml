@@ -153,7 +153,7 @@ FocusScope {
           }
         text: "%1".arg(currentCollection.name) || "Not Found"
         color: "black"
-        font.family: headerFont.name
+        font.family: globalFonts.sansBold || headerFont.name
         fontSizeMode: Text.Fit; minimumPixelSize: vpx(30); font.pixelSize: vpx(52)
         font.capitalization: Font.AllUppercase
 
