@@ -9,7 +9,7 @@ FocusScope {
 
     property var currentCollection
     property alias currentGameIndex: grid.currentIndex
-    readonly property var currentGame: currentCollection.games.get(currentGameIndex)
+    readonly property var currentGame: currentCollection ? Utils.getGame(currentCollection.games, currentGameIndex) : null
 
     width: parent.width
     height: parent.height
