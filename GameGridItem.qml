@@ -124,15 +124,15 @@ Rectangle {
     Text {
         id: favoriteIndicator
         visible: game.favorite
-        text: "♥"
+        text: "❤"
         color: systemColor
         font.pixelSize: vpx(28)
         style: Text.Outline
         styleColor: "#000000"
         anchors {
-            top: parent.top
+            bottom: parent.bottom
             right: parent.right
-            topMargin: vpx(6)
+            bottomMargin: vpx(6)
             rightMargin: vpx(6)
         }
         z: 5
