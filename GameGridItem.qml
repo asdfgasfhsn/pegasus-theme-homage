@@ -124,8 +124,8 @@ Rectangle {
     Text {
         id: favoriteIndicator
         visible: game.favorite
-        text: "★"
-        color: "#FFD24A"
+        text: "♥"
+        color: systemColor
         font.pixelSize: vpx(28)
         style: Text.Outline
         styleColor: "#000000"
