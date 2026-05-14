@@ -23,6 +23,7 @@ FocusScope {
         if (currentCollection) {
             sortMode = api.memory.get(currentCollection.shortName + 'SortMode') || "default";
         }
+        if (grid) grid.cells_need_recalc();
     }
 
     width: parent.width
@@ -170,8 +171,6 @@ FocusScope {
           highlightRangeMode: GridView.StrictlyEnforceRange
 
           model: sortedGames
-          onModelChanged: cells_need_recalc()
-          onCountChanged: cells_need_recalc()
 
           property real columnCount: {
               if (cellHeightRatio > 1.2) return 5;
