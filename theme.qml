@@ -81,7 +81,7 @@ FocusScope {
 
         focus: true
         onCollectionSelected: {
-          detailsView.currentGameIndex = Utils.findInitialGameIndex(api.memory, currentCollection);
+          detailsView.currentGameIndex = Utils.findInitialGameIndex(api.memory, currentCollection, detailsView.sortedGames);
           detailsView.focus = true
         }
     }
@@ -92,21 +92,21 @@ FocusScope {
         currentCollection: collectionsView.currentCollection
 
         onCancel: {
-          Utils.persistCursor(api.memory, currentCollection, currentGameIndex);
+          Utils.persistCursor(api.memory, currentCollection, detailsView.sortedGames, currentGameIndex);
           collectionsView.focus = true
         }
         onNextCollection: {
-          Utils.persistCursor(api.memory, currentCollection, currentGameIndex);
+          Utils.persistCursor(api.memory, currentCollection, detailsView.sortedGames, currentGameIndex);
           collectionsView.selectNext()
-          detailsView.currentGameIndex = Utils.findInitialGameIndex(api.memory, currentCollection);
+          detailsView.currentGameIndex = Utils.findInitialGameIndex(api.memory, currentCollection, detailsView.sortedGames);
         }
         onPrevCollection: {
-          Utils.persistCursor(api.memory, currentCollection, currentGameIndex);
+          Utils.persistCursor(api.memory, currentCollection, detailsView.sortedGames, currentGameIndex);
           collectionsView.selectPrev()
-          detailsView.currentGameIndex = Utils.findInitialGameIndex(api.memory, currentCollection);
+          detailsView.currentGameIndex = Utils.findInitialGameIndex(api.memory, currentCollection, detailsView.sortedGames);
         }
         onLaunchGame: {
-            Utils.persistCursor(api.memory, currentCollection, currentGameIndex);
+            Utils.persistCursor(api.memory, currentCollection, detailsView.sortedGames, currentGameIndex);
             currentGame.launch();
         }
     }
