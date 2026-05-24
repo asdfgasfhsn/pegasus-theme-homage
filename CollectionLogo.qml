@@ -24,7 +24,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         fillMode: Image.PreserveAspectFit
         smooth: true
-        source: shortName ? "assets/controllers_svg/%1.svg".arg(shortName) : ""
+        source: (shortName && shortName !== "@favourites") ? "assets/controllers_svg/%1.svg".arg(shortName) : ""
         asynchronous: true
         scale: selected ? 1.0 : 0.555
         opacity: selected ? 1 : 0.5
@@ -48,13 +48,30 @@ Item {
         }
     }
 
+    Text {
+        id: favouritesLogo
+        visible: shortName === "@favourites"
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        horizontalAlignment: Text.AlignHCenter
+        text: "❤\nFAVOURITES"
+        color: "#FFD24A"
+        font.pixelSize: vpx(56)
+        font.family: globalFonts.sansBold || headerFont.name
+        font.capitalization: Font.AllUppercase
+        scale: selected ? 1.0 : 0.555
+        opacity: selected ? 1.0 : 0.5
+        Behavior on scale { NumberAnimation { duration: 333 } }
+        Behavior on opacity { NumberAnimation { duration: 333 } }
+    }
+
     // Hit region matches the visible image, not the delegate's full-screen-width
     // slot. The PathView gives every delegate `width: root.width`, so anchoring
     // to parent would make adjacent delegates' hit regions overlap heavily; the
     // PathView's z-order then routes centre-of-screen clicks to a neighbour
     // instead of the centred logo.
     MouseArea {
-        anchors.fill: controllerImage
+        anchors.fill: shortName === "@favourites" ? favouritesLogo : controllerImage
         onClicked: logoRoot.clicked()
     }
 }
