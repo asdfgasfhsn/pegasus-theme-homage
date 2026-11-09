@@ -1,4 +1,4 @@
-# The Homage v0.2.0
+# The Homage v0.5.0
 
 Homage is theme for [Pegasus](http://pegasus-frontend.org) frontend inspired by retro gaming packaging and artwork.
 
